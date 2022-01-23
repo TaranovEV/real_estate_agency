@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 
 class Flat(models.Model):
@@ -47,6 +48,17 @@ class Flat(models.Model):
         blank=True,
         db_index=True)
     new_building = models.NullBooleanField(default=None)
+
+
+class Сomplaint(models.Model):
+    author = models.ForeignKey(User, on_delete=models.SET_NULL,
+                               null=True,
+                               verbose_name='Кто жаловался')
+    flat_complaint = models.ForeignKey(Flat, on_delete=models.SET_NULL,
+                                       null=True,
+                               verbose_name='Квартира, на которую пожаловались')
+    text = models.TextField(verbose_name='Текст жалобы')
+
 
     def __str__(self):
         return f'{self.town}, {self.address} ({self.price}р.)'
