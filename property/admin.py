@@ -13,6 +13,7 @@ class FlatAdmin(admin.ModelAdmin):
     list_filter = ['new_building',
                    'rooms_number',
                    'has_balcony']
+    raw_id_fields = ['who_likes']
 
 
 class ComplaintAdmin(admin.ModelAdmin):

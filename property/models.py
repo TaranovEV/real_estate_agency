@@ -48,6 +48,9 @@ class Flat(models.Model):
         blank=True,
         db_index=True)
     new_building = models.NullBooleanField(default=None)
+    who_likes = models.ManyToManyField(User,
+                                       verbose_name='Кто лайкнул',
+                                       related_name='flat_likes')
 
 
 class Сomplaint(models.Model):
