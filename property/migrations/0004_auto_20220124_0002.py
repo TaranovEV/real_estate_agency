@@ -6,17 +6,18 @@ from django.db import migrations
 def fill_field_new_buildings(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
     for real_estate_object in Flat.objects.all():
-        real_estate_object.new_building = False
-        if real_estate_object.construction_year >= 2015:
-            real_estate_object.new_building = True
+        real_estate_object.new_building = (
+            real_estate_object.construction_year >= 2015
+        )
         real_estate_object.save()
 
-def backward_fill_field_new_buildings(apps, schema_editor):
+def backward_fill_field_new_buildings(apps,
+                                      schema_editor):
     Flat = apps.get_model('property', 'Flat')
     for real_estate_object in Flat.objects.all():
-        real_estate_object.new_building = False
-        if real_estate_object.construction_year >= 2015:
-            real_estate_object.new_building = True
+        real_estate_object.new_building = (
+            real_estate_object.construction_year >= 2015
+        )
         real_estate_object.save()
 
 
