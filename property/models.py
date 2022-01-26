@@ -60,9 +60,11 @@ class Flat(models.Model):
 class Сomplaint(models.Model):
     author = models.ForeignKey(User, on_delete=models.SET_NULL,
                                null=True,
+                               related_name='complaint',
                                verbose_name='Кто жаловался')
     flat_complaint = models.ForeignKey(Flat, on_delete=models.SET_NULL,
                                        null=True,
+                                       related_name='complaint',
                                        verbose_name="""Квартира,
                                        на которую пожаловались""")
     text = models.TextField(verbose_name='Текст жалобы')
