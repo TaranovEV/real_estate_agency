@@ -46,7 +46,8 @@ class Flat(models.Model):
         null=True,
         blank=True,
         db_index=True)
-    new_building = models.NullBooleanField(default=None,
+    new_building = models.NullBooleanField(verbose_name='Новостройка',
+                                           default=None,
                                            db_index=True)
     who_likes = models.ManyToManyField(User,
                                        blank=True,
